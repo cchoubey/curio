@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+.box-shadow {
+  box-shadow: 0 0.75rem 0.75rem rgba(228, 18, 18, 0.05);
+}
