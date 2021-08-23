@@ -25,7 +25,7 @@ development:
   <<: *default
   database: curio_development
   username: curioadmin
-  password: <%= ENV['CURIO_DATABASE_PASSWORD_DEV'] %>
+  password: <%= ENV['curio_database_password'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -85,4 +85,4 @@ production:
   <<: *default
   database: curio_production
   username: curio
-  password: <%= ENV['CURIO_DATABASE_PASSWORD'] %>
+  password: <%= ENV['curio_database_password'] %>
