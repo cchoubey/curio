@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   scope:order_by_first_name, -> { order('LOWER(first_name)') }
+  validates :first_name, presence: true
 end
