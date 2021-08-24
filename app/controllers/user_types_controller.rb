@@ -1,6 +1,7 @@
 class UserTypesController < ApplicationController
   before_action :set_user_type, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  before_action :correct_user
   # GET /user_types or /user_types.json
   def index
     @user_types = UserType.all
@@ -55,6 +56,14 @@ class UserTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def correct_user
+    usr_type = UserType.find_by_id(current_user.user_type_id)
+    if usr_type.metric < 100
+      redirect_to user_types_path, notice: "Not authorrised"
+    end
+   
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

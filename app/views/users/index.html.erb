@@ -17,7 +17,7 @@
                 <td><%= link_to user.first_name + ' ' + user.last_name, edit_user_registration_path %></td>       
                 <td><%= user.email %></td>
                 <td><%= user.active %></td>
-                <td><%= link_to 'Delete', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %></td>
+                <td><%= link_to 'Delete', admin_destroy_user_path(user), tobedeleted: user.id, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %></td>
             </tr>
             <% end %>      
         </tbody>
