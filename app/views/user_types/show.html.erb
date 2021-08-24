@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @user_type.client_type %>
+</p>
+
+<p>
+  <strong>Metric:</strong>
+  <%= @user_type.metric %>
+</p>
+
+<%= link_to 'Edit', edit_user_type_path(@user_type) %> |
+<%= link_to 'Back', user_types_path %>

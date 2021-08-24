@@ -1,0 +1,26 @@
+
+<div class="container">
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Client Type</th>
+      <th>Metric</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_types.each do |user_type| %>
+      <tr>
+        <td><%= user_type.client_type %></td>
+        <td><%= user_type.metric %></td>
+        <td><%= link_to 'Delete', user_type, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Type', new_user_type_path, class:"btn btn-secondary"  %>
+</div>

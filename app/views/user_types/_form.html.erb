@@ -1,0 +1,29 @@
+
+<%= form_with(model: user_type) do |form| %>
+  <% if user_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_type.errors.count, "error") %> prohibited this user_type from being saved:</h2>
+
+      <ul>
+        <% user_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :client_type, class:"form-label" %>
+    <%= form.text_field :client_type, class:"form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :metric, class:"form-label" %>
+    <%= form.number_field :metric, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
+<% end %>
+
