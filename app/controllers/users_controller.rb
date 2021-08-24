@@ -19,10 +19,20 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find_by_id(params[:id])
-    user.active = false
+    user.active = !user.active
     user.save
     respond_to do |format|
-      format.html { redirect_to users_url, notice:  "user was successfully destroyed."}
+
+    if user.id != current_user.id  
+      if !user.active 
+        format.html { redirect_to users_url, notice:  "user was successfully destroyed."}
+      else
+        format.html { redirect_to users_url, notice:  "user was successfully reinstated."}
+      end
+    else
+      signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(user))
+      format.html { redirect_to root_path, notice:  "Your account is closed."}
+    end
       format.json { head :no_content }
     end
   end
