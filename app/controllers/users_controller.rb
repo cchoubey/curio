@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show,:edit,:update,:destroy]
 
   def index
-    if current_user.admin?
+    if current_user.user_types.admin?
       @users = User.all.order_by_first_name
     else
       ownuser = User.find_by_id(current_user.id)
