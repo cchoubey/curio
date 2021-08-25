@@ -43,10 +43,8 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
-  def update
-    format.html { redirect_to users_url, notice:  "yahan."}
+  def edit
+    @user = User.find_by_id(params[:id])
   end
 
 end

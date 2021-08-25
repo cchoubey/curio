@@ -1,0 +1,33 @@
+  <br/>
+  <div class="container">
+  <div class="card" style="width: 40vw;">
+  <div class="card-header">
+    <h4>Edit <%= @user.first_name + ' ' + @user.last_name %></h4>
+  </div>
+
+<%= form_for(@user, as: 'user', url: registration_path('user'), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+
+  <div class="mb-3">
+    <%= f.label :first_name, class:"form-label leftmargin" %><br />
+    <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class:"form-control leftmargin edituserwidth"  %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :last_name, class:"form-label leftmargin" %><br />
+    <%= f.text_field :last_name, placeholder: "Last Name", class:"form-control leftmargin edituserwidth"  %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :email, class:"form-label leftmargin" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control leftmargin edituserwidth" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class:"btn btn-secondary leftmargin" %>
+  <%= link_to "Back", :back, class:"btn btn-secondary" %>
+  </div>
+<% end %>
+<br/>
+</div>
