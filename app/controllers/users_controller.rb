@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     else
       ownuser = User.find_by_id(current_user.id)
       if ownuser.active?
-        @users.push(Usr.new(ownuser.first_name, ownuser.last_name, ownuser.email, ownuser.active, usr_type.client_type))
+        @users.push(Usr.new(ownuser.id, ownuser.first_name, ownuser.last_name, ownuser.email, ownuser.active, usr_type.client_type))
       else
         u = Usr.new
         @users = Array.new(1, u)

@@ -21,10 +21,14 @@
                 <td><%= user.email %></td>
                 <td><%= user.active %></td>
                 <td><%= user.client_type %></td>
-                <%if user.active == true %>
-                <td><%=  link_to 'Delete', admin_destroy_user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %></td>
-                <%else%>
-                <td><%=  link_to 'Un-Delete', admin_destroy_user_path(user.id), method: :delete, class:"btn btn-sm btn-outline-danger" %></td>
+                 <% if current_user.id != user.id || (current_user.id == user.id && user.client_type == 'admin') %>
+                    <%if user.active == true %>
+                    <td><%=  link_to 'Delete', admin_destroy_user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %></td>
+                    <%else%>
+                    <td><%=  link_to 'Un-Delete', admin_destroy_user_path(user.id), method: :delete, class:"btn btn-sm btn-outline-danger" %></td>
+                    <%end%>
+                    <% else %>
+                    <td></td>
                 <%end%>
             </tr>
             <% end %>      
