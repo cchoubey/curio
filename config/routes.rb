@@ -7,7 +7,7 @@ Rails.application.routes.draw do
      sessions: 'users/sessions',
      registrations: 'users/registrations'
  }
- #     ,
+ 
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   match 'users/:id' => 'users#edit', :via => :get, :as => :admin_edit_user
   root 'home#index'

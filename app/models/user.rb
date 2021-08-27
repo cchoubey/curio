@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :first_name, presence: true
 
   #belongs_to :userType #s, class_name: "user_type", foreign_key: "user_type_id"
+  has_many :products
 end

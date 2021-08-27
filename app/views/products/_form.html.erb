@@ -12,31 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class:"form-label leftmargin" %>
+    <%= form.text_field :name, class:"form-control leftmargin edituserwidth" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class:"form-label leftmargin" %>
+    <%= form.text_area :description, class:"form-control leftmargin edituserwidth" %>
   </div>
 
   <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
+    <%= form.label :brand, class:"form-label leftmargin" %>
+    <%= form.text_field :brand, class:"form-control leftmargin edituserwidth" %>
   </div>
 
   <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :stock %>
+    <%= form.label :stock, class:"form-label leftmargin" %>
+    <%= form.number_field :stock, class:"form-control leftmargin edituserwidth" %>
+  </div>
+    <div class="field">
+    <%= form.label :category, class:"form-label leftmargin" %><br/>
+    
+    <%= form.select :category_id, options_for_select(Category.all.current.collect { |p| [ p.name, p.id ] }), 
+  {}, { class: "form-select leftmargin edituserwidth" } %>
+    
   </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
+<br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-secondary leftmargin" %>
+    <%= link_to 'Back', :back, class:"btn btn-secondary" %>
   </div>
 <% end %>
