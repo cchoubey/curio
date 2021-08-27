@@ -1,3 +1,4 @@
+
 <%= form_with(model: category) do |form| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +12,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div lass="mb-3">
+    <%= form.label :name, class:"form-label leftmargin" %>
+    <%= form.text_field :name, class:"form-control leftmargin edituserwidth" %>
   </div>
-
+<br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-secondary leftmargin" %>
+     <%= link_to 'Back', :back, class:"btn btn-secondary" %>
   </div>
 <% end %>
+

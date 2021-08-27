@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  before_action :correct_user
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.order_by_name
   end
 
   # GET /categories/1 or /categories/1.json
@@ -47,11 +48,18 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def correct_user
+    if current_user.user_type_id  == 1
+      redirect_to root_path, notice: "Not authorised"
+    end
+  end 
+
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.destroy
+    @category.active = !@category.active
+    @category.save
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
+      format.html { redirect_to categories_url, notice: "Category was successfully deleted." }
       format.json { head :no_content }
     end
   end

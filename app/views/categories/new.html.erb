@@ -1,5 +1,11 @@
-<h1>New Category</h1>
+<div class="container">
+  <div class="card">
+  <div class="card-header">
+<h4>New Category</h4>
+</div>
+<br/>
+<%= render 'form', category: @category %> 
+<br/>
+ </div>
+</div>
 
-<%= render 'form', category: @category %>
-
-<%= link_to 'Back', categories_path %>
