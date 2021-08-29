@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<br/>
+<div class="container jumbotron">
 
 <p>
   <strong>Name:</strong>
@@ -14,6 +15,10 @@
   <strong>Brand:</strong>
   <%= @product.brand %>
 </p>
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
 
 <p>
   <strong>Stock:</strong>
@@ -25,5 +30,5 @@
   <%= @product.active %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary" %>  <%= link_to 'Back', :back, class:"btn btn-secondary" %>
+</div>
