@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20210829060813_create_product_image.rb
