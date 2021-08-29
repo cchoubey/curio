@@ -8,6 +8,16 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
+    <%= f.label "Profile Photo", class:"form-label" %><br />
+
+      <% if resource.avatar.attached? %>
+       <%= image_tag(resource.avatar_thumbnail) %>
+       <% else %>
+    <%= image_tag("default.jpg") %>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
     <%= f.label :first_name, class:"form-label" %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control"  %>
   </div>
