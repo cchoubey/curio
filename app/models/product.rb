@@ -1,13 +1,13 @@
 class Product < ApplicationRecord
     belongs_to :category
     #belongs_to :user
-    has_many :product_images
     has_many :product_comments
     scope :current, -> { where(active: true).order('LOWER(name)') }
     scope:order_by_name, -> { order('LOWER(name)') }
     has_many_attached :images
     validates :name, presence: true
     validates :stock, presence: true
+    validates :price, presence: true
     validate :image_type
     def thumbnail input
           self.images[input].variant(resize: "300x300").processed

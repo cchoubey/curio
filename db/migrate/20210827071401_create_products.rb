@@ -9,7 +9,5 @@ class CreateProducts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    #add_reference :users, :user_type, null: false, foreign_key: true
-    #add_reference :categories, :category, null: false, foreign_key: true
   end
 end

@@ -11,8 +11,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   
   <div class="mb-3">
-    <%= f.label "Profile Photo", class:"form-label" %><br />
-    <%= image_tag(resource.avatar_thumbnail) %> <%= f.file_field :avatar %>
+    <%= f.label "Profile Photo", class:"form-label leftmargin" %><br />
+    <%= image_tag(resource.avatar_thumbnail, class:"img-fluid img-thumbnail leftmargin") %> <%= f.file_field :avatar, class:"form-control leftmargin edituserwidth" %>
   </div>
 
   <div class="mb-3">
@@ -85,6 +85,7 @@
       <th>Brand</th>
        <th>Category</th>
       <th>Stock</th>
+      <th>Price</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -96,6 +97,7 @@
         <td><%= product.brand %></td>
          <td><%= product.category.name %></td>
         <td><%= product.stock %></td>
+        <td><%= product.price %></td>
         <td><%= link_to 'Edit', edit_product_path(product), class:"btn btn-sm btn-outline-secondary" %></td>
         <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %></td>
       </tr>

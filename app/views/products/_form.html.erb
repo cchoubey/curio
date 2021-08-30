@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :price, class:"form-label leftmargin" %>
+    <%= form.number_field :price, step: :any, class:"form-control leftmargin edituserwidth" %>
+  </div>
+
+  <div class="field">
     <%= form.label :stock, class:"form-label leftmargin" %>
     <%= form.number_field :stock, class:"form-control leftmargin edituserwidth" %>
   </div>
