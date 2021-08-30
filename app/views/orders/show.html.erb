@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @order.order_number %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @order.quantity %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @order.rate %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @order.discount %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @order.amount %>
+</p>
+
+<p>
+  <strong>Fullfillment date:</strong>
+  <%= @order.fullfillment_date %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @order.comments %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @order.gift %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @order.active %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
