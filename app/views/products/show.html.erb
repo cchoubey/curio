@@ -26,6 +26,13 @@
 </p>
 
 <p>
+  <strong>Images:</strong>
+  <% (0...@product.images.count).each do |image| %>
+    <%= image_tag(@product.thumbnail(image), class:"img-fluid img-thumbnail")  %>
+  <% end %>
+</p>
+
+<p>
   <strong>Active:</strong>
   <%= @product.active %>
 </p>

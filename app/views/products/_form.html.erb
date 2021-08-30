@@ -35,8 +35,11 @@
       <%= form.select :category_id, options_for_select(Category.all.current.collect { |p| [ p.name, p.id ] }, :selected=>product.category_id), 
   {}, { class: "form-select leftmargin edituserwidth" } %>  
   </div>
-
-  
+<br/>
+    <div class="field leftmargin">
+    <%= form.label "Photos", class:"form-label" %><br />
+     <%= form.file_field :images, multiple: true, class:"form-control edituserwidth" %>
+  </div>
 
 <br/>
   <div class="actions">
