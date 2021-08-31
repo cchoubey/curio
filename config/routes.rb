@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   match 'users/:id' => 'users#edit', :via => :get, :as => :admin_edit_user
   root 'home#index'
   match '/users',   to: 'users#index',   via: 'get'
+  match 'orders/by_product_id/:product_id' => 'orders#index', :via => :get, :as => :orders_by_product_id
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

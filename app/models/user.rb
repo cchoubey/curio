@@ -8,13 +8,14 @@ class User < ApplicationRecord
   after_commit :add_default_avatar, on: %i[create update]
   has_many :products
   has_one_attached :avatar
+  has_many :orders
 
   def avatar_thumbnail
-    if avatar.attached? 
+   # if avatar.attached? 
       avatar.variant(resize: "150x150!").processed
     # else
     #   "default.jpg"
-    end
+    #end
   end
 
   private 

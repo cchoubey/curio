@@ -2,6 +2,7 @@ class Product < ApplicationRecord
     belongs_to :category
     #belongs_to :user
     has_many :product_comments
+    has_many :orders
     scope :current, -> { where(active: true).order('LOWER(name)') }
     scope:order_by_name, -> { order('LOWER(name)') }
     has_many_attached :images

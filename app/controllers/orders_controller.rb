@@ -1,10 +1,18 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user! 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    if params.nil? || params[:product_id].nil?
+      @orders = current_user.orders.current
+    else
+      @orders = Order.where("product_id = ?", params[:product_id]).current
+    end
   end
+
+  # def by_product_id
+  #   @orders = Order.find_by_product_id(params[:product_id])
+  # end
 
   # GET /orders/1 or /orders/1.json
   def show
