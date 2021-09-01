@@ -77,14 +77,15 @@
     <br/>
       <%= link_to "Create new Category", new_category_path, class:"btn btn-secondary" %> 
       <%= link_to "Add new Product", new_product_path, class:"btn btn-secondary" %> 
-  <% end %>
-    <br/>
+          <br/>
       <br/>
+  <% end %>
+
     <div class="card">
     <div class="card-header">
       <h4>Your Orders</h4>
     </div>
-      <%= render 'orders/orders_grid', orders: resource.orders %>
+      <%= render 'orders/orders_grid', orders: resource.orders.current %>
     </div>  
 </div>
 </div>
