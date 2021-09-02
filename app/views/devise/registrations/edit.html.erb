@@ -75,7 +75,9 @@
       <%= render 'products/products_grid', resource: resource %>
     </div>
     <br/>
+    <% if resource.user_type_id > 2 %>
       <%= link_to "Create new Category", new_category_path, class:"btn btn-secondary" %> 
+    <% end %>
       <%= link_to "Add new Product", new_product_path, class:"btn btn-secondary" %> 
           <br/>
       <br/>

@@ -45,9 +45,9 @@ section.cms-boxes .cms-boxes-outer .cms-boxes-items {
 section.cms-boxes .cms-boxes-outer .cms-boxes-items p {
   color: #fff;
 }
-section.cms-boxes .cms-features {
-  background-color: #b70457;
-}
+// section.cms-boxes .cms-features {
+//   background-color: #b70457;
+// }
 section.cms-boxes .boxes-align {
   display: table-cell;
   vertical-align: middle;
@@ -67,18 +67,21 @@ section.cms-boxes .cms-boxes-items h2 {
   margin: 20px 0 10px;
   text-transform: uppercase;
 }
-section.cms-boxes .cms-security {
-  background-color: #0489b7;
-}
-section.cms-boxes .cms-security,
-section.cms-boxes .cms-documentation {
-  background-color: salmon;
-}
-section.cms-boxes .cms-security,
-section.cms-boxes .cms-documentation {
-  background-color: rgb(66, 16, 88);
-}
+// section.cms-boxes .cms-security {
+//   background-color: #0489b7;
+// }
+// section.cms-boxes .cms-security,
+// section.cms-boxes .cms-documentation {
+//   background-color: salmon;
+// }
+// section.cms-boxes .cms-security,
+// section.cms-boxes .cms-documentation {
+//   background-color: rgb(66, 16, 88);
+// }
 section.cms-boxes .cms-boxes-items:hover {
-  opacity: 0.2;
+  opacity: 0.4;
   cursor: pointer;
+}
+.chalpo {
+  background-image: url("/assets/banner.jpeg");
 }
