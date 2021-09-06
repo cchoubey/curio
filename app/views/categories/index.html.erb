@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Background Image</th>
       <th>Active</th>
       <th colspan="2"></th>
     </tr>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= category.name %></td>
          <td><%= category.description %></td>
+        <td><%= image_tag(category.image_thumbnail, style: "height: 50px; width: 50px") if category.bggroundimage.attached? %></td>
         <td><%= category.active %></td>
         <td><%= link_to 'Edit', edit_category_path(category), class:"btn btn-sm btn-outline-secondary" %></td>
         <% if category.active? %>
