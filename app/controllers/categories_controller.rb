@@ -23,40 +23,28 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
      @category = Category.new(category_params)
-      c = Category.where('lower(name) = ?', category_params[:name].downcase)   
-       
-      if c.length == 0     
-      
-        respond_to do |format|
-          if @category.save
-            format.html { redirect_to categories_path, notice: "Category was successfully created." }
-            format.json { render :show, status: :created, location: @category }
-          else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @category.errors, status: :unprocessable_entity }
-          end
-        end
+     respond_to do |format|
+      if @category.save
+        format.html { redirect_to categories_path, notice: "Category was successfully created." }
+        format.json { render :show, status: :created, location: @category }
       else
-        respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render @category.errors, status: :unprocessable_entity }   
-        end 
+        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
-    c = Categry.where('lower(name) = ?', category_params[:name].downcase)
-
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to categories_path, notice: "Category was successfully updated." }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @category.update(category_params)
+          format.html { redirect_to categories_path, notice: "Category was successfully updated." }
+          format.json { render :show, status: :ok, location: @category }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @category.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   def correct_user

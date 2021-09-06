@@ -31,7 +31,3 @@
 
 en:
   hello: "Hello world"
-  errors:
-    messages:
-      name: "name cant be blank"
-      name_duplicate: "this category already exists"
