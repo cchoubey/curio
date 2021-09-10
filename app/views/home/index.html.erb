@@ -6,25 +6,30 @@
 
   <section class="cms-boxes">
     <div class="container-fluid">
-     <% (0...@categories.count).each do |i| %>
-    <%  j = i + 1 %>
-        <% if i == 0 || (j > 3 && j % 3 == 1) %>
+<%  i = 0 %>
+    <% @categories.each do |category| %>
+      <%  i = i + 1 %>
+        <% if i % 3 == 1 %>
     <div class="row">
         <% end %>
-         <div class="col-md-4 cms-boxes-outer">
-            <div class="cms-boxes-items" style="background:<%= @categories[i].background %>;">
+        <div class="col-md-4 cms-boxes-outer">
+        <% if category.bggroundimage.attached? %>
+            <div class="cms-boxes-items" style="background-image: url(<%= rails_blob_url(category.bggroundimage) %>)">
+            <% else %>
+             <div class="cms-boxes-items" style="background:<%= category.background %>;">
+            <% end %>
                 <div class="boxes-align">
                     <div class="small-box">
-                       <!-- <i class="fa fa-4x fa-automobile">&nbsp;</i> -->
-                        <h2><%= @categories[i].name %></h2>
-                        <p><%= @categories[i].description %></p>                       
+                        <h2><%= category.name %></h2>
+                        <p><%= category.description %></p>                       
                     </div>
                 </div>
             </div>
          </div>
-        <% if (i > 0 && j % 3 == 0) || j == @categories.count %>
+
+        <% if i % 3 == 0 %>
     </div>
-        <% end %>   
+        <% end %>
     <% end %>
 
   </section>
