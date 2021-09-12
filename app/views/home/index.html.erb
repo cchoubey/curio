@@ -3,7 +3,7 @@
 <img src="/assets/banner.jpeg" class="img-fluid mimg-thumbnail" alt="...">
  <h1 class="centered embossed">One place for all art lovers and collectors</h1>
  </div>
-
+<div style="background-color: rgb(247, 211, 211);">
   <section class="cms-boxes">
     <div class="container-fluid">
 <%  i = 0 %>
@@ -14,7 +14,8 @@
         <% end %>
         <div class="col-md-4 cms-boxes-outer">
         <% if category.bggroundimage.attached? %>
-            <div class="cms-boxes-items" style="background-image: url(<%= rails_blob_url(category.bggroundimage) %>)">
+            <div class="cms-boxes-items" 
+            style="background-image: url(<%= rails_blob_url(category.bggroundimage) %>);  background-size: cover;">
             <% else %>
              <div class="cms-boxes-items" style="background:<%= category.background %>;">
             <% end %>
@@ -27,9 +28,10 @@
             </div>
          </div>
 
-        <% if i % 3 == 0 %>
+        <% if i % 3 == 0 || i == @categories.count %>
     </div>
         <% end %>
     <% end %>
 
   </section>
+</div>
