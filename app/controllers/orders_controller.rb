@@ -75,3 +75,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:order_number, :quantity, :rate, :discount, :amount, :fullfillment_date, :comments, :gift, :active)
     end
 end
+# trivial change today at 16/12/2021
