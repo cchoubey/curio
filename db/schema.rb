@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_072511) do
+ActiveRecord::Schema.define(version: 2022_03_18_020831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2021_09_06_072511) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "brand_name"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_brands_on_category_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -51,6 +59,15 @@ ActiveRecord::Schema.define(version: 2021_09_06_072511) do
     t.string "background", default: "#0489b7", null: false
     t.string "description"
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "matches", id: false, force: :cascade do |t|
+    t.integer "match_id", null: false
+    t.integer "host_team", null: false
+    t.integer "guest_team", null: false
+    t.integer "host_goals", null: false
+    t.integer "guest_goals", null: false
+    t.index ["match_id"], name: "matches_match_id_key", unique: true
   end
 
   create_table "order_statuses", force: :cascade do |t|
@@ -106,6 +123,12 @@ ActiveRecord::Schema.define(version: 2021_09_06_072511) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "teams", id: false, force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.string "team_name", limit: 30, null: false
+    t.index ["team_id"], name: "teams_team_id_key", unique: true
+  end
+
   create_table "user_types", force: :cascade do |t|
     t.string "client_type"
     t.integer "metric", default: 1, null: false
@@ -132,6 +155,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_072511) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "brands", "categories"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
