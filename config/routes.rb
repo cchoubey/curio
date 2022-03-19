@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'brand/Index'
+  resources :brands
   resources :orders
   resources :products
   resources :categories
