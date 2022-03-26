@@ -14,7 +14,7 @@
     <% @brands.each do |brand| %>
       <tr>
         <td><%= brand.brand_name %></td>
-         <td><%= brand.category %></td>
+         <td><%= brand.category.name %></td>
         <td><%= brand.active %></td>
         <td><%= link_to 'Edit', edit_brand_path(brand), class:"btn btn-sm btn-outline-secondary" %></td>
         <% if brand.active? %>
@@ -29,5 +29,6 @@
 
 <br>
 
-<%= link_to 'New Brand', new_brand_path, class:"btn btn-secondary" %>
+<%= link_to 'New Brand', new_brand_path, class:"btn btn-secondary"  %>
+
 </div>

@@ -19,6 +19,7 @@ class BrandsController < ApplicationController
 
   # GET /brands/1/edit
   def edit
+
   end
 
   # POST /brands or /brands.json
@@ -62,7 +63,7 @@ class BrandsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_brand
+    def set_category
       @brand = Brand.find(params[:id])
     end
 
@@ -77,4 +78,9 @@ class BrandsController < ApplicationController
         redirect_to root_path, notice: "Not authorised"
       end
     end 
+
+    private
+    def set_brand
+      @brand = Brand.find(params[:id])
+    end
 end
