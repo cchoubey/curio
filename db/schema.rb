@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_075135) do
+ActiveRecord::Schema.define(version: 2022_03_26_030856) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -37,13 +34,13 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "brands", force: :cascade do |t|
+  create_table "brands", charset: "utf8mb3", force: :cascade do |t|
     t.string "brand_name"
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -52,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["category_id"], name: "index_brands_on_category_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,28 +59,19 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
-  create_table "matches", id: false, force: :cascade do |t|
-    t.integer "match_id", null: false
-    t.integer "host_team", null: false
-    t.integer "guest_team", null: false
-    t.integer "host_goals", null: false
-    t.integer "guest_goals", null: false
-    t.index ["match_id"], name: "matches_match_id_key", unique: true
-  end
-
-  create_table "order_statuses", force: :cascade do |t|
+  create_table "order_statuses", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", charset: "utf8mb3", force: :cascade do |t|
     t.string "order_number"
     t.integer "quantity"
-    t.decimal "rate"
+    t.decimal "rate", precision: 10
     t.integer "discount"
-    t.decimal "amount"
+    t.decimal "amount", precision: 10
     t.datetime "fullfillment_date"
     t.string "comments"
     t.boolean "gift", default: false, null: false
@@ -98,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "product_comments", force: :cascade do |t|
+  create_table "product_comments", charset: "utf8mb3", force: :cascade do |t|
     t.string "comment"
     t.boolean "active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -109,7 +97,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.index ["user_id"], name: "index_product_comments_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "brand"
@@ -119,25 +107,21 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
-    t.decimal "price"
+    t.decimal "price", precision: 10
+    t.bigint "brand_id", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "teams", id: false, force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.string "team_name", limit: 30, null: false
-    t.index ["team_id"], name: "teams_team_id_key", unique: true
-  end
-
-  create_table "user_types", force: :cascade do |t|
+  create_table "user_types", charset: "utf8mb3", force: :cascade do |t|
     t.string "client_type"
     t.integer "metric", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -162,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_075135) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_comments", "products"
   add_foreign_key "product_comments", "users"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "users", "user_types"
