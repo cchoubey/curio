@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    # category = Category.new
+    # category.name = "-SELECT-"
+    # category.id = -1
+    # @product = Category.all.current.insert(0,category)
   end
 
   # GET /products/1/edit

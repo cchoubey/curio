@@ -10,11 +10,24 @@
       </ul>
     </div>
   <% end %>
+
     <div class="field">
     <%= form.label :category, class:"form-label leftmargin" %><br/>
-      <%= form.select :category_id, options_for_select(Category.all.current.collect { |p| [ p.name, p.id ] }, :selected=>product.category_id), 
-  {}, { class: "form-select leftmargin edituserwidth" } %>  
+      <%=  form.select :category_id, 
+    options_for_select(Category.all.current.collect { |p| [ p.name, p.id ] }), 
+    {include_blank: true}, 
+    { class: "form-select leftmargin edituserwidth", onchange: "alert('chandan')" } %>  
   </div>
+
+    <div class="field">
+    <%= form.label :brand, class:"form-label leftmargin" %><br/>
+      <%=  form.select :brand_id, 
+    options_for_select(Category.all.current.collect { |p| [ p.name, p.id ] }, 
+    :selected=>product.category_id), 
+    {include_blank: true}, 
+    { class: "form-select leftmargin edituserwidth", onchange: "alert('chandan')" } %>  
+  </div>
+
   <div class="field">
     <%= form.label :name, class:"form-label leftmargin" %>
     <%= form.text_field :name, class:"form-control leftmargin edituserwidth" %>
@@ -23,11 +36,6 @@
   <div class="field">
     <%= form.label :description, class:"form-label leftmargin" %>
     <%= form.text_area :description, rows:"5", class:"form-control leftmargin edituserwidth" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :brand, class:"form-label leftmargin" %>
-    <%= form.text_field :brand, class:"form-control leftmargin edituserwidth" %>
   </div>
 
   <div class="field">
